@@ -1,22 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require('../utils/config');
-const { getCurrentEnvironment } = require('../utils/helpers');
-
-// Get database access credentials for the current environment.
-const environment = getCurrentEnvironment();
-const { database, username, password, dialect, host } = config.database[environment];
-
-// Connection settings.
-const options = {
-    dialect,
-    host,
-    operatorsAliases: Sequelize.Op
-};
 
 // Connect to the database.
-const sequelize = new Sequelize(database, username, password, options);
+const sequelize = new Sequelize(process.env.JAWSDB_URL);
 const db = {};
 
 fs.readdirSync(__dirname)

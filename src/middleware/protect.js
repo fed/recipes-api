@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const { getTokenFromRequest } = require('../utils/helpers');
-const { secret } = require('../utils/config');
 const { AUTH_ERROR, AUTH_INVALID_TOKEN } = require('../utils/messages');
 
 module.exports = (request, response, next) => {
@@ -19,7 +18,7 @@ module.exports = (request, response, next) => {
     }
 
     // Make sure token is valid
-    jwt.verify(token, secret, (error, decoded) => {
+    jwt.verify(token, process.env.SECRET, (error, decoded) => {
         // Nope!
         if (error) {
             return response.status(401).send({

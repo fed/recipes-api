@@ -1,11 +1,6 @@
 const jwt = require('jsonwebtoken');
 const get = require('lodash/get');
 const { md5, sha1 } = require('hash-util');
-const { secret } = require('./config.json');
-
-function getCurrentEnvironment() {
-    return process.env.NODE_ENV || 'development';
-}
 
 function hash(password) {
     return md5(sha1(password));
@@ -24,7 +19,7 @@ function getTokenFromRequest(request) {
 }
 
 function getPayloadFromToken(token) {
-    return jwt.verify(token, secret);
+    return jwt.verify(token, process.env.SECRET);
 }
 
 function getUserIdFromRequest(request) {
@@ -35,7 +30,6 @@ function getUserIdFromRequest(request) {
 }
 
 module.exports = {
-    getCurrentEnvironment,
     hash,
     getTokenFromRequest,
     getPayloadFromToken,

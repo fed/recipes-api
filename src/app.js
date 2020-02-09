@@ -2,9 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// Secret for generating tokens
-const { secret } = require('./utils/config');
-
 // Route Handlers
 const health = require('./routes/health');
 const login = require('./routes/login');
@@ -15,7 +12,7 @@ const app = express();
 
 // App settings
 app.set('port', process.env.PORT || 8080);
-app.set('secret', secret);
+app.set('secret', process.env.SECRET); // Secret for generating tokens
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

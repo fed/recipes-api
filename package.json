@@ -8,10 +8,10 @@
   "license": "MIT",
   "scripts": {
     "eslint": "eslint -f stylish --ext .js ./src",
-    "nodemon": "NODE_ENV=staging nodemon --inspect ./src/index.js",
+    "nodemon": "nodemon --inspect ./src/index.js",
     "watch": "npm-run-all eslint nodemon",
     "stop": "forever stop ./src/index.js",
-    "start": "NODE_ENV=production forever start ./src/index.js"
+    "start": "forever start ./src/index.js"
   },
   "dependencies": {
     "assign-deep": "^1.0.1",
@@ -26,9 +26,9 @@
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",
+    "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
-    "pg": "^7.18.1",
     "prettier": "^1.19.1",
     "sequelize": "^5.21.4"
   },

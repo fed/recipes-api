@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../../models');
 const { hash } = require('../../utils/helpers');
-const { secret } = require('../../utils/config');
 
 /**
  * Authenticate user based on the provided email and password.
@@ -52,7 +51,7 @@ module.exports = (email, password) => {
         };
 
         // Create and return token iff user is found and password is right.
-        const token = jwt.sign(claims, secret, expiration);
+        const token = jwt.sign(claims, process.env.SECRET, expiration);
 
         return Promise.resolve(token);
     });

@@ -1,5 +1,4 @@
 const { name, version } = require('../../../package');
-const { getCurrentEnvironment } = require('../../utils/helpers');
 const { SUCCESS } = require('../../utils/messages');
 
 /**
@@ -16,8 +15,7 @@ module.exports = (request, response) => {
         },
         data: {
             name,
-            version,
-            environment: getCurrentEnvironment()
+            version
         }
     });
 };
