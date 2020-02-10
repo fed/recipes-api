@@ -7,7 +7,7 @@ const { Recipe } = require('../../models');
  *
  * @param {number} id - Recipe Id. Required.
  * @param {string} title - Recipe title. Required.
- * @param {string} description - Recipe description. Required.
+ * @param {string} description - Recipe description.
  * @param {string} imageUrl - Recipe image URL.
  * @param {string} sourceUrl - Recipe source URL.
  * @return {Promise} - Promise value: Updated recipe.
@@ -17,13 +17,6 @@ module.exports = (id, title, description, imageUrl, sourceUrl) => {
         return Promise.reject({
             status: 400,
             message: 'Please make sure to provide a valid new `title`.'
-        });
-    }
-
-    if (!description) {
-        return Promise.reject({
-            status: 400,
-            message: 'Please make sure to provide a valid new `description`.'
         });
     }
 
